@@ -32,4 +32,13 @@ public class Ingredient {
             if(weight<0) throw new DeletingNegativeWeightException();
             this.weight-=weight;
         }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Ingredient){
+            Ingredient other = (Ingredient) obj;
+            return this.name.equals(other.name);
+        }else{
+            return false;
+        }
+    }
 }

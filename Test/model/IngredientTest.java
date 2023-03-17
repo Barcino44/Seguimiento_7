@@ -30,7 +30,8 @@ public class IngredientTest {
         } catch (AddingNegativeWeightException ex) {
             ex.printStackTrace();
         }
-        assertTrue(result);
+        assertFalse(result);
+        assertEquals(ingredient.getWeight(),245);
     }
     @Test
     public void removeWeight(){
@@ -45,9 +46,18 @@ public class IngredientTest {
     }
     @Test
     public void validateRemovingNegativeWeigth(){
+        boolean result =false;
         //Arrange
         setup1();
-        //Act
+        //
+        try {
+            ingredient.removeWeight(-100);
+            result=true;
+        } catch (DeletingNegativeWeightException ex) {
+            ex.printStackTrace();
+        }
+        assertFalse(result);
+        assertEquals(ingredient.getWeight(),245);
 
     }
 
